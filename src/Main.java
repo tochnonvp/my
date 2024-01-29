@@ -10,7 +10,7 @@ public class Main{
             int a = Integer.parseInt(strings[0]);
             int b = Integer.parseInt(strings[1]);
 
-            if (b>= 11 | a >= 11) {
+            if (input.length()>5|b>= 11 | a >= 11) {
                 System.out.println("не выполнено усовение задачи");
             } else if (input.contains("+")) {
                 System.out.println(a + b);
