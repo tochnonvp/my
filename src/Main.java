@@ -28,6 +28,6 @@ public class Main{
             System.out.println("не выполнено условие задачи");//один два
         }
 
-
+        System.out.println(",,,,");
     }
 }
