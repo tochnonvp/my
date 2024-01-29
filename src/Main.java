@@ -25,7 +25,7 @@ public class Main{
             }
 
         } catch (Exception e) {
-            System.out.println("не выполнено условие задачи");//один два
+            System.out.println("не выполнено условие задачи");
         }
 
 
