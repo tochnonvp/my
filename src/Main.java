@@ -23,11 +23,8 @@ public class Main{
             } else {
                 System.out.println("не выполнено условие задачи");
             }
-
         } catch (Exception e) {
             System.out.println("не выполнено условие задачи");
         }
-
-
     }
 }
