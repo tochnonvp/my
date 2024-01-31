@@ -1,30 +1,43 @@
 import java.util.Scanner;
-
-public class Main{
+public class Main {
     public static void main(String[] args) {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Введите операцию со знаками +,-,*,/, \nиспользуйте числа от 1 до 10 включительно");
-            String input = scanner.next();
-            String[] strings = input.split("\\W");
-            int a = Integer.parseInt(strings[0]);
-            int b = Integer.parseInt(strings[1]);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("введите 1 операцию со знакаи +,-,*,/,\nиспользуйте числа от 1 до 10 включительно");
+        String input = scanner.nextLine();
+        System.out.println(Calc(input));
+        scanner.close();
+    }
 
-            if (input.length()>5|b>= 11 | a >= 11) {
-                System.out.println("не выполнено усовение задачи");
-            } else if (input.contains("+")) {
-                System.out.println(a + b);
-            } else if (input.contains("*")) {
-                System.out.println(a * b);
-            } else if (input.contains("-")) {
-                System.out.println(a - b);
-            } else if (input.contains("/")) {
-                System.out.println(a / b);
-            } else {
-                System.out.println("не выполнено условие задачи");
-            }
-        } catch (Exception e) {
-            System.out.println("не выполнено условие задачи");
+    public static String Calc(String input) {
+        String[] strings = input.replaceAll("\\s", "").split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
+        if (strings.length != 3) {
+            throw new IllegalArgumentException("Не выполнены условия задачи");
         }
+
+        int a;
+        int b;
+        int result;
+
+        try {
+            a = Integer.parseInt(strings[0]);
+            b = Integer.parseInt(strings[2]);
+        }catch (NumberFormatException e){
+            throw new  NumberFormatException("неверные данные");
+        }
+
+        if (a < 1 | a > 10 | b < 1 | b > 10) {
+            throw new RuntimeException("используйте числа от 1 до 10 включительно");
+        } else if (input.contains("+")) {
+            result = a + b;
+        } else if (input.contains("*")) {
+            result = a * b;
+        } else if (input.contains("-")) {
+            result = a - b;
+        } else if (input.contains("/")) {
+            result = a / b;
+        }else {
+            throw new IllegalArgumentException("Неверный знак");
+        }
+        return String.valueOf(result);
     }
 }
